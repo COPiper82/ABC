@@ -1,0 +1,150 @@
+EasyABC 1.3.5 - an open source ABC music score editor by Nils Liberg
+
+Change log
+---------------
+
+V1.3.5:
+- new xml2abc version (by Willem Vree) with improved lyrics support
+- alpha/experimental musicxml export (implemented by Willem Vree)
+- new nwc2xml version is used
+- new abc2abc version is used 
+- improved typing assistance - matching [], {}, ""
+- MCM support: incipits and alignment should work
+- more reliable automatic insertion of bar symbol
+- syntax highlighting of \" inside strings
+- added typing assistance: automatic uppercase/lowercase (only at the end of a line)
+- an imported file that lacks file extension is assumed to be an abc file
+- double-clicking an item in ABC commands reference inserts it into the ABC code
+- fixed bug: typing assistance settings weren't saved
+- fixed bug: Ctrl+Z after batch import would undo insertion of one tune at a time
+
+V1.3.4:
+- More powerful MusicXML import thanks to xml2abc, developed by Willem Vree
+- Noteworthy Composer file import (thanks to nwc2xml by James Lee)
+- find/replace functionality added
+- key-independent ABC code find functionality
+- midi to abc conversion (manual) anacrusis support
+- auto-scrolling of the music score as the text cursor is moved
+- graphical note selection upon click in ABC code editor
+- graphical note selection works for all notes in a chord
+- halve/double note lengths no longer adds extra space at end
+- on OSX files can be dragged to the Dock icon in order to open them
+- on OSX the quit menu has moved to the application menu
+- midi-to-abc: more legible note duration fractions, eg. C/ instead of C1/2
+- new keyboard shortcuts for adding/removing slurs: s or (
+- new keyboard shortcuts for adding/removing broken rythms: < and >
+- new keyboard shortcut for toggling staccato: . 
+- graphical note selection now matches text selection more closely
+- clicking on a white part of the score moves the text cursor to the closest note
+- clicking on a note transfers focus to the ABC editor
+- detection of anacrusis when generating incipits is more reliable
+- when writing many W:, H: or % lines the prefix is automatically added on the third line
+- typing assistance: automatically add note durations upon space key presses
+- typing assistance: pressing space when bar is full automatically adds | 
+- typing assistance: when one of ([{" is pressed )]}" is automatically added.
+- Italian translation (by Valerio Pelliccioni)
+- work-around for abc2midi's lack of support for \" in text annotations
+- experimental MCM support if L: is set to mcm_default
+- fixed bug: path to 64-bit version of ghostscript was not detected
+- fixed bug: missing space between tunes after sorting
+- fixed bug: multi-col incipit generation handled number of rows incorrectly
+- fixed bug: too few bars extracted for incipits in tunes with key changes
+- fixed bug: copy and paste didn't work just after EasyABC had been started
+- fixed bug: first note couldn't be selected by clicking on it
+- fixed bug: scrolling the music pane didn't work on some Windows systems
+- fixed bug: print and print preview was faulty on OSX
+- fixed packaging problem: the Windows version was missing a manifest file
+- fixed bug: not thread safe translation function was invoked in updated thread
+
+V1.3.3:
+support for OSX Lion
+danish translation (by Bendix Rodgaard)
+french translation (by Frederic Aupepin)
+detection of most recent ghostscript version was made more reliable
+fixed bug: customized abcm2ps path wasn't used for svg export (reported by Frederic Aupepin)
+fixed bug: clear cache didn't clear temporary midi files
+fixed bug: using the tab key to insert bar symbols didn't work on OSX
+notes and rests can be selected by clicking on them
+incipit index file generation for single-voice tunes (still a bit experimental)
+reduced generation of temporary files which may speed up music update
+support for editing multiple documents at once 
+drag and drop to an empty document opens the dropped file instead of importing it
+made it possible to drag and drop multiple files to import them in one go
+removed refresh button from toolbar and added it to the View menu (shortcut key is F5)
+double-clicking on the Play button causes the playback to loop
+if a file starts with %abc-2.1 it implies that it's utf-8 encoded
+assistance for files that do not contain abc-charset or %abc-2.1
+  when saving if they contain extended letters for which utf-8 is needed
+  when loading if they have a utf-8 byte order mark
+print preview uses a more sensible default zoom setting on OSX
+new option in the Tools menu to create an index of tune incipits
+new option in the Tools menu to renumber the X: fields
+new option in the Tools menu to sort tunes by one or more fields
+typing X: causes the number to be filled in automatically
+
+V1.3.2
+decorations syntax is now (once again) !ppp! instead of +ppp+
+notes should be clickable also when %%scale has been customized
+PDF bookmarks will only be added if abcm2ps hasn't added them already
+exported HTML files contain markup to indicate the utf-8 encoding
+fixed a problem related to the joining of file and tune headers
+fixed midi program (previously used 1-128 range instead of 0-127)
+
+V1.3.1
+added HTML export (multi tune export still a bit experimental)
+added bookmarks to PDF export (windows/linux only - ghostscript required)
+new option in the View menu to not reduce margins in order to use 
+  the screen area economically
+fixed bug: MIDI export did not to work
+fixed bug: if EasyABC was associated with .abc double-clicking a file wouldn't work
+fixed: abc2abc.exe was accidentally not included in the setup file
+
+V1.3
+* Multi page support
+* Font setting in View menu
+* ABC fields and commands reference in View menu
+* Options for default playback midi instrument and whether to play chords.
+* Pressing tab inserts a bar symbol (may make it easier for some)
+* Bar alignment (used to make the bars on multiple ABC code lines align)
+* Font customization is respected when rendering a score
+* Print and print preview support (still in an experimental phase)
+* If landscape is set in page setup, then %%landscape 1 is added to ABC.
+* If %%landscape is set in the ABC code it automatically affects the page setup.
+* Changes to the format file are now reflected if one refreshes the score
+* Better abcm2ps compatibility: ABC commands within multicol in the header are ignored.
+* Fixed bug: when an error is displayed text cursor can be scrolled out of view
+* Fixed bug: first note of a tune could not be selected
+* Fixed bug: musicxml converter now handles endings named both '1' and '1.'
+
+V1.3 beta
+* use of abcm2ps 6.3.3 svg output instead of interpreting PS using python code
+   gives much faster updating of the music pane, 
+   adds possibility to select notes also for polyphonical music, and
+   makes it easier to use unicode strings for title and lyrics
+* fixed bug - musical score pane wouldn't update unless it was docked.
+* option to restore the window pane layout to the default
+* minimize buttons added to the tune list and music panes
+* better Linux compatibility
+* path settings for abcm2ps, abc2midi, abc2abc and format file
+* clear cache menu option
+* abcm2ps invoked in background thread
+* musical score image can optionally be automatically updated as one types
+* the music pane, tune list and ABC editor text cursor are automatically synchronized
+* when one selects another tune the music pane is automatically scrolled up in order to avoid confusion
+* export options also available in the File menu along with the new option to export all tunes.
+* support for %%abc-charset (eg. utf-8) as well as encoded characters like eg. \"a
+* improved syntax highlighting for lyrics
+* possibility to sort the tune list by index number, title (in the future probably also by other fields)
+* the insert symbol menus use the format +tenuto+ instead of !tenuto!
+* added transpose and double/halv note lengths functionality using abc2abc as backend
+* fields at the top of an ABC file (before the first X: line) are
+   included when presenting a single tune in the collection
+
+V1.23 
+Better support for newer versions of abcm2ps
+Music pane scrolling bug on OSX fixed
+When two or more notes are selected EasyABC will not play repeats.
+
+General information:
+-------------------
+EasyABC supports playback and preview of the edited tunes and features syntax highlighting of ABC code. It also supports a customized MIDI to ABC import. By not relying on midi2abc it's possible to create better formatted ABC code. There is also support for MusicXML to ABC conversion (only a reasonable subset of MusicXML is supported).
